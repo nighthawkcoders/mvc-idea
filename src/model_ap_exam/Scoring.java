@@ -24,10 +24,9 @@ public abstract class Scoring
     
     
     /**
-     * An example of a method - replace this comment with your own
+     * Update scoring on questions
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  isCorrect  answer correct
      */
     public void updateCounters(Boolean isCorrect)
     {
@@ -41,36 +40,23 @@ public abstract class Scoring
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Results message
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void printCounters()
-    {
-        System.out.println(this.getCounterMsg());
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return    correct/total
      */
     public String getCounterMsg()
     {
-        return new String("Results: " + this.correct + " of " + this.questions);
+        return "Results: " + this.correct + " of " + this.questions;
     }
     
     /**
-     * An example of a method - replace this comment with your own
+     * Scoring message
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return    scoring
      */
     public static String getCounterTotalMsg()
     {
-        return new String("Totals:  " + Scoring.totalCorrect + " of " + Scoring.totalQuestions);
+        return "Totals:  " + Scoring.totalCorrect + " of " + Scoring.totalQuestions;
     }
 
 }

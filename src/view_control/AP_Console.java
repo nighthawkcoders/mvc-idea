@@ -29,9 +29,9 @@ import util.ConsoleMethods;
  *      viii)   MidTermTest will randomize test execution and problem execution to ensure learing
  *              is thorough, versus simple memorizing the answers
  *
- * @authors John Mortensen
+ * @author John Mortensen
  * @version 1.0
- * @created    August 29, 2019
+ * August 29, 2019
  */
 
 
@@ -48,8 +48,8 @@ public class AP_Console
     // BlueJ clear console command
     ConsoleMethods.clearScreen();
     
-    String menuTotalMsg = new String();
-    String menuMsg[] = new String[5];
+    String menuTotalMsg = "";
+    String[] menuMsg = new String[5];
     boolean running = true;
 
     while (running) 
@@ -72,26 +72,24 @@ public class AP_Console
         swValue = ConsoleMethods.inputInt(" Select option: ");
     
         // Switch construct
-        switch (swValue) 
-        {
-            case 1:
-              menuMsg[1] = MathQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
-              break;
-            case 2:
-              menuMsg[2] = BinaryMathQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
-              break;
-            case 3:
-              menuMsg[3] = DataTypeQuestions.mainTest();
-              menuTotalMsg = Scoring.getCounterTotalMsg();
-              break;
-            case 0:
-              ConsoleMethods.println("Exit selected");
-              running = false;
-              break;
-            default:
-              ConsoleMethods.println("Invalid selection");
+        switch (swValue) {
+            case 1 -> {
+                menuMsg[1] = MathQuestions.mainTest();
+                menuTotalMsg = Scoring.getCounterTotalMsg();
+            }
+            case 2 -> {
+                menuMsg[2] = BinaryMathQuestions.mainTest();
+                menuTotalMsg = Scoring.getCounterTotalMsg();
+            }
+            case 3 -> {
+                menuMsg[3] = DataTypeQuestions.mainTest();
+                menuTotalMsg = Scoring.getCounterTotalMsg();
+            }
+            case 0 -> {
+                ConsoleMethods.println("Exit selected");
+                running = false;
+            }
+            default -> ConsoleMethods.println("Invalid selection");
         }
     }
   }

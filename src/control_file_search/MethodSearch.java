@@ -1,15 +1,15 @@
 package control_file_search;
 
-/**
- * Searches PigLatinator.java for methods that match the input "Vow"
- * 
- * Excludes possibilities of calling methods with a dot
- * Checks for curley brackets in line with method and the proceeding line
- * Searches for methods that match and ignores case
- * Returns found methods as the methods (ArrayList)
- * found (boolean) indicates if methods were found or not
- * 
- * @author Sydney Hsieh
+/*
+  Searches PigLatinator.java for methods that match the input "Vow"
+
+  Excludes possibilities of calling methods with a dot
+  Checks for curley brackets in line with method and the proceeding line
+  Searches for methods that match and ignores case
+  Returns found methods as the methods (ArrayList)
+  found (boolean) indicates if methods were found or not
+
+  @author Sydney Hsieh
  * @version 2
  */
 
@@ -22,13 +22,11 @@ import java.io.*;
 
 
 public class MethodSearch
-{  
-	 private  boolean Found;
-	 private  ArrayList<String> Lines;   	//Each element of ArrayList contains a line from file
-	 private  ArrayList<String> Methods;	//methods matched will be added to methods ArrayList
+{
+    private final ArrayList<String> Lines;   	//Each element of ArrayList contains a line from file
+	 private final ArrayList<String> Methods;	//methods matched will be added to methods ArrayList
 	 private  String Filenm;
 	 private  String SearchTerm;
-	 private  String Log;
 
 	/*
 	public static void main (String[] args)
@@ -40,10 +38,8 @@ public class MethodSearch
     
     public MethodSearch()
     {
-    	Found = true;
-    	Lines = new ArrayList<String>();
-        Methods = new ArrayList<String>();
-        Log = "";
+        Lines = new ArrayList<>();
+        Methods = new ArrayList<>();
     }
     
     public static void main(String filenm, String searchTerm)
@@ -71,7 +67,7 @@ public class MethodSearch
     private void scan ()
     {
         ConsoleMethods.println("In MethodSearch Scan" + Filenm);
-        Scanner sc = null;
+        Scanner sc;
 
         try 
         {
@@ -86,7 +82,7 @@ public class MethodSearch
             for (int j=0; j<Lines.size(); j++) 
             {
                 //splitting array list by spaces
-                String[] splitted = Lines.get(j).split(" |\\(");
+                String[] splitted = Lines.get(j).split("[ (]");
                 
                 int length = splitted.length;
                 for(int i = 0 ; i<length; i++)
@@ -94,7 +90,6 @@ public class MethodSearch
                     if (splitted[i].contains("."))
                     {
                        //if line contains a dot, a method is being called
-                       Found = false;
                     }
                     else if (splitted[i].toLowerCase().contains(SearchTerm.toLowerCase()) 
                     && Lines.get(j).contains("{")) 
@@ -109,8 +104,7 @@ public class MethodSearch
                         Methods.add(splitted[i]);
                     }
                     else 
-                    { 
-                        Found = false;
+                    {
                     }
                 }
             }

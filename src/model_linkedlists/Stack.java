@@ -6,7 +6,7 @@ import java.util.*;
  *  Implementation of Stack, using LinkedList (previous only).
  *
  * @author     John Mortensen
- * @created    December 24, 2019
+ * December 24, 2019
  */
 public class Stack
 {
@@ -73,18 +73,18 @@ public class Stack
    */
   public String toString()
   {
-    String stackToString = "[";
+    StringBuilder stackToString = new StringBuilder("[");
 
     LinkedList node = lifo;  				// start from the back
     while (node != null)
     {
-    	stackToString += node.getObject(); 	// append the data to output string
+    	stackToString.append(node.getObject()); 	// append the data to output string
     	node = node.getPrevious();    		// go to previous node
     	if (node != null)
-    	  stackToString += ", ";
+    	  stackToString.append(", ");
     }										// loop 'till you reach the beginning
-    stackToString += "]";
-    return stackToString;
+    stackToString.append("]");
+    return stackToString.toString();
   }
   
     

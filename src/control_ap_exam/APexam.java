@@ -2,13 +2,13 @@ package control_ap_exam;
 
 import model_ap_exam.Question;
 import model_linkedlists.CircleQueue;
-import util.ConsoleMethods;;
+import util.ConsoleMethods;
 
 /**
  *  Establish  a set of random questions.
  *
  * @author     John Mortensen
- * @created    December 24, 2019
+ * December 24, 2019
  */
 public class APexam {
 
@@ -55,18 +55,11 @@ public class APexam {
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
 		{
-	  		switch((i)%questionTypes) {
-	  			case 0:
-	  				q = new control_ap_exam.MathQuestions();
-	  				break;
-	  			case 1:
-	  				q = new control_ap_exam.DataTypeQuestions();
-	  				break;
-	  			case 2:
-  				default:
-	  				q = new control_ap_exam.BinaryMathQuestions();
-	  				break;
-	  		}
+            q = switch ((i) % questionTypes) {
+                case 0 -> new MathQuestions();
+                case 1 -> new DataTypeQuestions();
+                default -> new BinaryMathQuestions();
+            };
 	  		q.setID(i+1);
   			exam.add(q);
 		}

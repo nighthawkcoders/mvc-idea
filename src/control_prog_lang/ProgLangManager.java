@@ -1,17 +1,17 @@
 package control_prog_lang;
 
 import model_linkedlists.CircleQueue;
-import util.ConsoleMethods;;
+import util.ConsoleMethods;
 
 /**
  *  Establish  a set of random questions.
  *
  * @author     John Mortensen
- * @created    December 24, 2019
+ * December 24, 2019
  */
 public class ProgLangManager {
 
-  private CircleQueue progLangs;
+  private final CircleQueue progLangs;
   private int size = 5;
 
   /**
@@ -55,23 +55,13 @@ public class ProgLangManager {
 	  	// pushing data to stack with console output
 	  	for (int i = 0; i <= size-1; i++)
 		{
-	  		switch(i) {
-	  			case 0:
-	  				am = new CSharp();
-	  				break;
-	  			case 1:
-	  				am = new Java();
-	  				break;
-	  			case 2:
-	  				am = new Python();
-	  				break;
-	  			case 3:
-	  				am = new Ruby();
-	  				break;
-	  			case 4:
-	  			default:
-	  				am = new Swift();
-	  		}
+			am = switch (i) {
+				case 0 -> new CSharp();
+				case 1 -> new Java();
+				case 2 -> new Python();
+				case 3 -> new Ruby();
+				default -> new Swift();
+			};
 	  		am.setID(i+1);
   			progLangs.add(am);
 		}	  	
@@ -130,17 +120,17 @@ public class ProgLangManager {
    */
   public String searchProgLangs(String searchTerm)
   {
-  	String Answer="";
+  	StringBuilder Answer= new StringBuilder();
 	AttributeModel pLang;
 	
 	// Loop to search text within each language within List of Programming Languages
 	for (int i = 0, j = 0; i == j; j = incrementPositon(i++)) {
 		pLang = getProgLangByIndex(i);
 		if ( pLang.toString().indexOf( searchTerm ) > 0 ) {
-			Answer = Answer + " " + pLang.getKey();
+			Answer.append(" ").append(pLang.getKey());
 		}
 	}
-	return (Answer);
+	return (Answer.toString());
   }
  
   

@@ -6,12 +6,12 @@ import util.ConsoleMethods;
  *  Demonstrates the use of Stack created from LinkedList class.
  *
  * @author     John Mortensen
- * @created    December 24, 2019
+ * December 24, 2019
  */
 public class CircleQueueDemo
 {
-  private CircleQueue myqueue;
-  private int size = 26-1;	// alphabet size
+  private final CircleQueue myqueue;
+  private final int size = 26-1;	// alphabet size
 
   public CircleQueueDemo()
   {
@@ -30,7 +30,7 @@ public class CircleQueueDemo
 	  	for (int i = 0; i <= size; i++)
 		{
 			myqueue.add(
-					new String( Character.toString('a' + i)) // push stack (characters, numbers, etc)
+					Character.toString('a' + i) // push stack (characters, numbers, etc)
 					);  
 			ConsoleMethods.println("Add:" + myqueue.getObject() + " " + myqueue);
 		}

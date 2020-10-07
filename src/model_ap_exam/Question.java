@@ -23,15 +23,14 @@ public class Question extends Scoring
    	protected int aOffset = 0, bOffset = 1, cOffset = 2, dOffset = 3, eOffset = 4;			// Multiple choice index value
     
     // defaults for choice
-   	protected int choiceOffset = 0;						// choiceOffset is used when scrambled to move answers around
-    protected boolean choiceEfixed = true;				// used to keep choice E fixed versus randomization
+   	protected int choiceOffset;				// choiceOffset is used when scrambled to move answers around
+    protected boolean choiceEfixed;			// used to keep choice E fixed versus randomization
 	protected String[] choices = {"", "", "", "", ""};
 
     
     /**
      * Constructor for objects of class Question
      * 
-     * @param  void
      */
     public Question()
     {
@@ -47,7 +46,6 @@ public class Question extends Scoring
     /**
      * setup question choices and answer
      * 
-     * @param  void
      */
      protected void setupQuestion() {
     	// This outputs constructor being run
@@ -65,7 +63,6 @@ public class Question extends Scoring
      /**
       * setup question data default, expectation is this will changed through polymorphism
       *
-      * @param  void
       */
     protected void setupQuestionData() {
     	// This outputs constructor being run
@@ -82,8 +79,7 @@ public class Question extends Scoring
     /**
      * Question ID setter
      *
-     * @param  id
-     * @return void
+     * @param  id question id or number
      */
 	public void setID(int id) {
 		this.ID = id;
@@ -92,7 +88,6 @@ public class Question extends Scoring
 	/**
      * Question ID getter
      *
-     * @param  void
      * @return ID
      */
 	public int getID() {
@@ -102,7 +97,6 @@ public class Question extends Scoring
 	/**
      * Question getter
      *
-     * @param  void
      * @return String	contents of question
      */
 	public String getQuestion() {
@@ -112,11 +106,10 @@ public class Question extends Scoring
 	/**
      * Choices getter for Multiple Choice
      *
-     * @param  void
      * @return String 	content of choices with ABCDEF formatting
      */
 	public String getChoices() {
-		return String.format(
+		return (
             charA + ": " + choices[0] + "\n"  + 
     	    charB + ": " + choices[1] + "\n"  + 
     	    charC + ": " + choices[2] + "\n"  + 
@@ -128,7 +121,6 @@ public class Question extends Scoring
 	/**
      * Answer getter with formatting to correspond to getChoices
      *
-     * @param  void
      * @return String 	correct answer with letter prefex of right answer (A or B or C...)
      */
 	public String getAnswer() {	
@@ -142,8 +134,6 @@ public class Question extends Scoring
 	/**
      * Console support wrapper for asking question, getting result, and calculating results
      *
-     * @param  void
-     * @return void
      */
     public void  askQuestionConsole()
     {
@@ -154,8 +144,6 @@ public class Question extends Scoring
     /**
      * Console support for asking question and getting result
      *
-     * @param  void
-     * @return void
      */
     private boolean getAnswerConsole()
     {
@@ -177,17 +165,13 @@ public class Question extends Scoring
         else ConsoleMethods.print("(missed it!) ");
         ConsoleMethods.println(answer);
         ConsoleMethods.println();
-        
-        /*Boolean ansStatus = (choice == answerKey);
-        calcResult(ansStatus)
-        return ansStatus;*/
+
         return (choice == answerKey);
     }
 
     public String toString()
     {
-    	String s = getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
-    	return s;
+		return getID() + ". " + getQuestion() + "\n" + getChoices() + "\nAnswer: " + getAnswer() + "\n\n";
     }
   
 }

@@ -1,10 +1,11 @@
-package view_control; /**
- * UI to support pallindrome evaluation
- * 
- * support one input and multiple outputs
- * 
- * @version 1.0
- * @author John Mortensen
+package view_control;
+/*
+  UI to support pallindrome evaluation
+
+  support one input and multiple outputs
+
+  @version 1.0
+ *John Mortensen
  */
 
 import java.awt.EventQueue;
@@ -39,14 +40,12 @@ public class PalindromeUI extends MainMenu {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PalindromeUI frame = new PalindromeUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				PalindromeUI frame = new PalindromeUI();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -72,24 +71,22 @@ public class PalindromeUI extends MainMenu {
 		pali_input.setColumns(10);
 		
 		JButton buttonTestPali = new JButton("Test");
-		buttonTestPali.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Three calls to Pali Testers 
-				pali_resultIJ.setText(					// Set return value of call to IJ answer
-						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
-								pali_input.getText(), 	// Get text from user input ^
-								1));					// Pick Loop IJ (1)
-				
-				pali_resultRecursion.setText(			// Set return value of call to Backwards answer
-						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
-								pali_input.getText(), 	// Get text from user input ^
-								2));					// Pick Recursion (2)
-				
-				pali_resultReplace.setText(				// Set Pali return of call to Replace answer
-						Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
-								pali_input.getText(), 	// Get text from user input ^
-								3));					// Pick Replace all (3)
-			}
+		buttonTestPali.addActionListener(e -> {
+			// Three calls to Pali Testers
+			pali_resultIJ.setText(					// Set return value of call to IJ answer
+					Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
+							pali_input.getText(), 	// Get text from user input ^
+							1));					// Pick Loop IJ (1)
+
+			pali_resultRecursion.setText(			// Set return value of call to Backwards answer
+					Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
+							pali_input.getText(), 	// Get text from user input ^
+							2));					// Pick Recursion (2)
+
+			pali_resultReplace.setText(				// Set Pali return of call to Replace answer
+					Palindrome.isPaliLog(			// Call Pali logic, test user input, return Log ^
+							pali_input.getText(), 	// Get text from user input ^
+							3));					// Pick Replace all (3)
 		});
 		buttonTestPali.setBounds(117, 41, 145, 29);
 		contentPane.add(buttonTestPali);
@@ -98,11 +95,9 @@ public class PalindromeUI extends MainMenu {
 		buttonTestPaliC.setForeground(Color.RED);
 		buttonTestPaliC.setBackground(Color.LIGHT_GRAY);
 		buttonTestPaliC.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		buttonTestPaliC.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Call to Pali Console Tester 
-				Palindrome.main(null);
-			}
+		buttonTestPaliC.addActionListener(e -> {
+			// Call to Pali Console Tester
+			Palindrome.main(null);
 		});
 		buttonTestPaliC.setBounds(423, 7, 21, 18);
 		contentPane.add(buttonTestPaliC);

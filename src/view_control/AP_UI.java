@@ -21,24 +21,21 @@ public class AP_UI extends MainMenu {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-    private JTextArea testQuestion = new JTextArea();
-    private JTextArea testChoices = new JTextArea();
-    private JTextArea testQuestionAnswer = new JTextArea();
-    private APexam exam = new APexam(20);
+	private final JTextArea testQuestion = new JTextArea();
+    private final JTextArea testChoices = new JTextArea();
+    private final JTextArea testQuestionAnswer = new JTextArea();
+    private final APexam exam = new APexam(20);
 	
     /**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AP_UI frame = new AP_UI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				AP_UI frame = new AP_UI();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -49,7 +46,7 @@ public class AP_UI extends MainMenu {
 	public AP_UI() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -59,71 +56,57 @@ public class AP_UI extends MainMenu {
 		contentPane.add(lblExamSections);
 		
 		JButton btnMath = new JButton("Math");
-		btnMath.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.MathQuestions();
-				testQuestion.setText(q.getQuestion());
-				testChoices.setText(q.getChoices());
-				testQuestionAnswer.setText(q.getAnswer());
-			}
+		btnMath.addActionListener(e -> {
+			model_ap_exam.Question q = new control_ap_exam.MathQuestions();
+			testQuestion.setText(q.getQuestion());
+			testChoices.setText(q.getChoices());
+			testQuestionAnswer.setText(q.getAnswer());
 		});
 		btnMath.setBounds(0, 21, 75, 29);
 		contentPane.add(btnMath);
 		
 		JButton btnDataTypes = new JButton("Data Types");
-		btnDataTypes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.DataTypeQuestions();
-				testQuestion.setText(q.getQuestion());
-				testChoices.setText(q.getChoices());
-				testQuestionAnswer.setText(q.getAnswer());
-			}
+		btnDataTypes.addActionListener(e -> {
+			model_ap_exam.Question q = new control_ap_exam.DataTypeQuestions();
+			testQuestion.setText(q.getQuestion());
+			testChoices.setText(q.getChoices());
+			testQuestionAnswer.setText(q.getAnswer());
 		});
 		btnDataTypes.setBounds(64, 21, 131, 29);
 		contentPane.add(btnDataTypes);
 		
 		JButton btnBinaryMath = new JButton("Binary Math");
-		btnBinaryMath.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = new control_ap_exam.BinaryMathQuestions();
-				testQuestion.setText(q.getQuestion());
-				testChoices.setText(q.getChoices());
-				testQuestionAnswer.setText(q.getAnswer());
-			}
+		btnBinaryMath.addActionListener(e -> {
+			model_ap_exam.Question q = new control_ap_exam.BinaryMathQuestions();
+			testQuestion.setText(q.getQuestion());
+			testChoices.setText(q.getChoices());
+			testQuestionAnswer.setText(q.getAnswer());
 		});
 		btnBinaryMath.setBounds(183, 21, 117, 29);
 		contentPane.add(btnBinaryMath);
 		
 		JButton btnRev = new JButton("<");
-		btnRev.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = exam.getQuestionRev();
-				testQuestion.setText(q.getID() + ". " + q.getQuestion());
-				testChoices.setText(q.getChoices());
-				testQuestionAnswer.setText(q.getAnswer());
-			}
+		btnRev.addActionListener(e -> {
+			model_ap_exam.Question q = exam.getQuestionRev();
+			testQuestion.setText(q.getID() + ". " + q.getQuestion());
+			testChoices.setText(q.getChoices());
+			testQuestionAnswer.setText(q.getAnswer());
 		});
 		btnRev.setBounds(312, 21, 39, 29);
 		contentPane.add(btnRev);
 		
 		JButton btnFWD = new JButton(">");
-		btnFWD.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				model_ap_exam.Question q = exam.getQuestionFwd();
-				testQuestion.setText(q.getID() + ". " + q.getQuestion());
-				testChoices.setText(q.getChoices());
-				testQuestionAnswer.setText(q.getAnswer());
-			}
+		btnFWD.addActionListener(e -> {
+			model_ap_exam.Question q = exam.getQuestionFwd();
+			testQuestion.setText(q.getID() + ". " + q.getQuestion());
+			testChoices.setText(q.getChoices());
+			testQuestionAnswer.setText(q.getAnswer());
 		});
 		btnFWD.setBounds(390, 21, 39, 29);
 		contentPane.add(btnFWD);
 		
 		JButton btnConsole = new JButton("C");
-		btnConsole.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				AP_Console.main(null);
-			}
-		});
+		btnConsole.addActionListener(e -> AP_Console.main(null));
 		btnConsole.setForeground(Color.RED);
 		btnConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
 		btnConsole.setBackground(Color.LIGHT_GRAY);

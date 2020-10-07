@@ -14,12 +14,11 @@ import util.ConsoleMethods;
  */
 public class BinaryMathQuestions extends QuestionRandom
 {
-	private char[] operators = {'&', '|', '+', '-'};
+	private final char[] operators = {'&', '|', '+', '-'};
 
 	/**
      * Constructor for objects of class BinaryMathQuestions
      * 
-     * @param  void
      */
     public BinaryMathQuestions()
     {   	  	
@@ -29,7 +28,6 @@ public class BinaryMathQuestions extends QuestionRandom
     /**
      * Sets up a Binary Math questions according to instance variables (this...) in Question class
      *
-     * @return    void
      */
     @Override
     protected void setupQuestionData()
@@ -38,7 +36,7 @@ public class BinaryMathQuestions extends QuestionRandom
     	Random rand = new Random();
     	Integer arg1 = rand.nextInt(16)+1;
     	Integer arg2 = rand.nextInt(8)+1;
-    	Integer opIndex = rand.nextInt(operators.length);
+    	int opIndex = rand.nextInt(operators.length);
     	char operator = operators[opIndex];
     	
         // maximum binary number for testing is 15, we need to be reasonable
@@ -100,7 +98,7 @@ public class BinaryMathQuestions extends QuestionRandom
     /**
      * Zero pad binary number to supplied binary length 
      *
-     * @param  arg1             number to convert to binary
+     * @param  arg              number to convert to binary
      * @param  binaryLength     number of bits for number (ie 4 bits)
      * @return    the binary String with leading 0s
      */
@@ -113,7 +111,6 @@ public class BinaryMathQuestions extends QuestionRandom
      * Main test method to support console execution
      * 
      * @param  args		// satisfies default for Java
-     * @return void
      */
     public static void main(String[] args)
     {
@@ -123,7 +120,6 @@ public class BinaryMathQuestions extends QuestionRandom
     /**
      * MainTest supports console execution and receiving write or wrong return message
      * 
-     * @param  void
      * @return score / right or wrong
      */
     public static String mainTest ()

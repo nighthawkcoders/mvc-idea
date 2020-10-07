@@ -26,14 +26,12 @@ public class MainMenu extends JFrame {
      * Launch the application.
      */
     public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    MainMenu frame = new MainMenu();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                MainMenu frame = new MainMenu();
+                frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
@@ -71,11 +69,9 @@ public class MainMenu extends JFrame {
         menuBar.add(mnApTest);
 
         JMenuItem mntmApReview = new JMenuItem("Review");
-        mntmApReview.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                AP_UI frame = new AP_UI();
-                frame.setVisible(true);
-            }
+        mntmApReview.addActionListener(e -> {
+            AP_UI frame = new AP_UI();
+            frame.setVisible(true);
         });
         mnApTest.add(mntmApReview);
 
@@ -83,38 +79,30 @@ public class MainMenu extends JFrame {
         menuBar.add(mnJig);
 
         JMenuItem mntmCalculator = new JMenuItem("Calculator");
-        mntmCalculator.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                CalculatorUI frame = new CalculatorUI();
-                frame.setVisible(true);
-            }
+        mntmCalculator.addActionListener(e -> {
+            CalculatorUI frame = new CalculatorUI();
+            frame.setVisible(true);
         });
         mnJig.add(mntmCalculator);
 
         JMenuItem mntmMethodSearch = new JMenuItem("File Search");
-        mntmMethodSearch.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                MethodSearchUI frame = new MethodSearchUI();
-                frame.setVisible(true);
-            }
+        mntmMethodSearch.addActionListener(e -> {
+            MethodSearchUI frame = new MethodSearchUI();
+            frame.setVisible(true);
         });
 
         JMenuItem mntmPalindrome = new JMenuItem("Palindrome");
-        mntmPalindrome.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                PalindromeUI frame = new PalindromeUI();
-                frame.setVisible(true);
-            }
+        mntmPalindrome.addActionListener(e -> {
+            PalindromeUI frame = new PalindromeUI();
+            frame.setVisible(true);
         });
         mnJig.add(mntmPalindrome);
         mnJig.add(mntmMethodSearch);
 
         JMenuItem mntmProgrammingLanguages = new JMenuItem("Model Search");
-        mntmProgrammingLanguages.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ProgLang_UI frame = new ProgLang_UI();
-                frame.setVisible(true);
-            }
+        mntmProgrammingLanguages.addActionListener(e -> {
+            ProgLang_UI frame = new ProgLang_UI();
+            frame.setVisible(true);
         });
         mnJig.add(mntmProgrammingLanguages);
 

@@ -16,7 +16,6 @@ public class QuestionRandom extends Question
     /**
      * Constructor for objects of class Question
      * 
-     * @param  void
      */
     public QuestionRandom()
     {
@@ -54,23 +53,13 @@ public class QuestionRandom extends Question
     	
     	// answer key set to match choice offset
 		ConsoleMethods.println("answerKey original: " +answerKey);
-    	switch (answerKey) {
-		case charA:
-			answerKey = answers[aOffset];
-			break;
-		case charB:
-			answerKey = answers[bOffset];
-			break;
-		case charC:
-			answerKey = answers[cOffset];
-			break;
-		case charD:
-			answerKey = answers[dOffset];
-			break;
-		case charE:
-			answerKey = answers[eOffset];
-			break;
-    	}
+		switch (answerKey) {
+			case charA -> answerKey = answers[aOffset];
+			case charB -> answerKey = answers[bOffset];
+			case charC -> answerKey = answers[cOffset];
+			case charD -> answerKey = answers[dOffset];
+			case charE -> answerKey = answers[eOffset];
+		}
     	
     	/* Remaining code is Console information to show reordering */
     	

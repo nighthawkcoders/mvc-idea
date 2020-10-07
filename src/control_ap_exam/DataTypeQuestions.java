@@ -14,13 +14,12 @@ import util.ConsoleMethods;
  */
 public class DataTypeQuestions extends QuestionRandom
 {
-	private String[] datatype = {"int", "float", "char"};		// conversions supported (from double)
-	private int[] multiplier = {10, 100, 1000};					// math multipliers used
+	private final String[] datatype = {"int", "float", "char"};		// conversions supported (from double)
+	private final int[] multiplier = {10, 100, 1000};				// math multipliers used
 
 	/**
      * Constructor for objects of class DataTypeQuestions
      * 
-     * @param  void
      */
     public DataTypeQuestions()
     {
@@ -36,9 +35,6 @@ public class DataTypeQuestions extends QuestionRandom
     /**
      * Sets up a Data Type question according to instance variables (this...) in Question class 
      *
-     * @param  datatype     data type of reference
-     * @param  number       number in conversion
-     * @return void
      */
     @Override
     protected void setupQuestionData()
@@ -46,18 +42,17 @@ public class DataTypeQuestions extends QuestionRandom
     	// Logic to setup data for Data Conversion questions
     	Random rand = new Random();
     	double number = rand.nextDouble() * multiplier[rand.nextInt(multiplier.length)];
-    	Integer index = rand.nextInt(datatype.length);
+    	int index = rand.nextInt(datatype.length);
     	String dataTypeName = datatype[index];
     	
         // format question base off of dataTypeName and number from arguments
-        this.question = String.format(
-            "Which represents double " +
-            String.format
-             ("%.8f",
-              number) +
-            " conversion to a " +
-            dataTypeName +
-            "?");
+        this.question = "Which represents double " +
+        String.format
+         ("%.8f",
+          number) +
+        " conversion to a " +
+        dataTypeName +
+        "?";
                     
         // format question choices with calculated answer
         this.choiceA = String.format
@@ -75,7 +70,7 @@ public class DataTypeQuestions extends QuestionRandom
         this.choiceE = "All of the above";
         
         // find answer key by dataTypeName in question
-        if (dataTypeName == "float")
+        if (dataTypeName.equals("float"))
         {
             this.answer = this.choiceA;
             this.answerKey = this.charA;
@@ -99,7 +94,6 @@ public class DataTypeQuestions extends QuestionRandom
      * Main test method to support console execution
      * 
      * @param  args		// satisfies default for Java
-     * @return void
      */
     public static void main(String[] args)
     {
@@ -109,7 +103,6 @@ public class DataTypeQuestions extends QuestionRandom
     /**
      * MainTest supports console execution and receiving write or wrong return message
      * 
-     * @param  void
      * @return score / right or wrong
      */
     public static String mainTest ()

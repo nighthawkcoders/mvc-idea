@@ -113,13 +113,9 @@ public class Palindrome
         ConsoleMethods.println( String.format( "Step %d: Prepare string two \"%s\" to  \"%s\"", step++, forwardStr, reverseStr ));
 
 		// Compare strings by ignoring case
-        ConsoleMethods.println( String.format( "Step %d: Compare ignoring case \"%s\" to reverse \"%s\"", step++,forwardStr, reverseStr ));
-        boolean result = (forwardStr.equalsIgnoreCase(reverseStr)); 
-		if (result) {
-			setPaliLog(true, msg);
-		} else {
-			setPaliLog(false, msg);
-		}
+        ConsoleMethods.println( String.format( "Step %d: Compare ignoring case \"%s\" to reverse \"%s\"", step,forwardStr, reverseStr ));
+        boolean result = (forwardStr.equalsIgnoreCase(reverseStr));
+		setPaliLog(result, msg);
 		
 		return result;	
 	}
@@ -166,11 +162,7 @@ public class Palindrome
 
         String testStr = Candidate;
         boolean result = palindromeTestRecurse(testStr, 0);
-		if (result) {
-			setPaliLog(true, msg);
-		} else {
-			setPaliLog(false, msg);
-		}
+		setPaliLog(result, msg);
 		
 		return result;	
     }
@@ -201,7 +193,7 @@ public class Palindrome
 		}
         
 		// Java recursion acts funny if True and Recursion are not at the end, thus placement and use of indexes
-		return ( ((rindex - lindex) > 2) ? palindromeTestRecurse(shrinker.substring(lindex,rindex), ++step) : true );		
+		return (((rindex - lindex) <= 2) || palindromeTestRecurse(shrinker.substring(lindex, rindex), ++step));
 	}
     
 }

@@ -1,30 +1,19 @@
-package view_control; /**
- * UI to support MethodSearch evaluation
- * 
- * support one input and multiple outputs
- * 
- * @version 1.0
+package view_control;
+/*
+  UI to support MethodSearch evaluation
+
+  support one input and multiple outputs
+
+  @version 1.0
  * @author John Mortensen
  */
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import control_file_search.MethodSearch;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JList;
 
 public class MethodSearchUI extends MainMenu {
 
@@ -33,23 +22,20 @@ public class MethodSearchUI extends MainMenu {
 	 */
 	// view section ++
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField filename;
-	private JTextField searchTerm;
+	private final JTextField filename;
+	private final JTextField searchTerm;
 
 	/**
 	 * Launch the application.
 	 */
 	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MethodSearchUI frame = new MethodSearchUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				MethodSearchUI frame = new MethodSearchUI();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -61,7 +47,7 @@ public class MethodSearchUI extends MainMenu {
 	public MethodSearchUI() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -92,13 +78,11 @@ public class MethodSearchUI extends MainMenu {
 		searchTerm.setText("Binary");
 
 		JButton buttonTest = new JButton("Test");
-		buttonTest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ArrayList<String> methods = MethodSearch.getMethods(filename.getText(), searchTerm.getText());
-				l1.clear();
-				for (String method: methods) {
-					l1.addElement(method);
-				}
+		buttonTest.addActionListener(e -> {
+			ArrayList<String> methods = MethodSearch.getMethods(filename.getText(), searchTerm.getText());
+			l1.clear();
+			for (String method: methods) {
+				l1.addElement(method);
 			}
 		});
 		buttonTest.setBounds(275, 0, 145, 29);
@@ -108,11 +92,7 @@ public class MethodSearchUI extends MainMenu {
 		buttonTestConsole.setForeground(Color.RED);
 		buttonTestConsole.setBackground(Color.LIGHT_GRAY);
 		buttonTestConsole.setFont(new Font("Lucida Grande", Font.PLAIN, 8));
-		buttonTestConsole.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MethodSearch.main(filename.getText(), searchTerm.getText());
-			}
-		});
+		buttonTestConsole.addActionListener(e -> MethodSearch.main(filename.getText(), searchTerm.getText()));
 		buttonTestConsole.setBounds(419, 7, 21, 18);
 		contentPane.add(buttonTestConsole); 
          

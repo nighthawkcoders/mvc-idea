@@ -36,7 +36,7 @@ public class LinkedList
   /**
    *  Setter for prevNode in LinkedList object
    *
-   * @node    A LinkedList object that is prevNode to current Object
+   * @param node    A LinkedList object that is prevNode to current Object
    */
   public void setPrevNode(LinkedList node)
   {
@@ -46,7 +46,7 @@ public class LinkedList
   /**
    *  Setter for nextNode in LinkedList object
    *
-   * @node    A LinkedList object that is nextNode to current Object
+   * @param node    A LinkedList object that is nextNode to current Object
    */
   public void setNextNode(LinkedList node)
   {

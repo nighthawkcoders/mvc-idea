@@ -1,12 +1,10 @@
 package model_linkedlists;
 
-import java.util.*;
-
 /**
  *  Implementation of Queue, using LinkedList (previous and next).
  *
  * @author     John Mortensen
- * @created    December 24, 2019
+ * December 24, 2019
  */
 public class CircleQueue
 {
@@ -132,7 +130,7 @@ public class CircleQueue
 		  opaqueObject = headNode.getObject();
 		  headNode = headNode.getNext();
 		  if (headNode == null)
-			  tailNode = headNode;
+			  tailNode = null;
 		  else
 			  headNode.setPrevNode(null);
 	  }
@@ -148,18 +146,18 @@ public class CircleQueue
    */
   public String toString()
   {
-    String queueToString = "[";
+    StringBuilder queueToString = new StringBuilder("[");
 
     LinkedList node = headNode;  			// start from the head
     while (node != null)
     {
-    	queueToString += node.getObject(); 	// append the data to output string
+    	queueToString.append(node.getObject()); 	// append the data to output string
     	node = node.getNext();				// go to next node
     	if (node != null)
-    		queueToString += ", ";
+    		queueToString.append(", ");
     }										// loop 'till queue ends
-    queueToString += "]";
-    return queueToString;
+    queueToString.append("]");
+    return queueToString.toString();
   }
   
     

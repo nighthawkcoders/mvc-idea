@@ -15,12 +15,11 @@ import util.ConsoleMethods;
  */
 public class MathQuestions extends QuestionRandom
 { 
-	private char[] operators = {'/', '%'};	// operators supported
+	private final char[] operators = {'/', '%'};	// operators supported
 	
     /**
      * Constructor for objects of class MathQuestions
      * 
-     * @param  void
      */
     public MathQuestions()
     {	    	
@@ -31,7 +30,6 @@ public class MathQuestions extends QuestionRandom
     /**
      * Sets up a Math question according to instance variables (this...) in Question class
      *
-     * @return void
      */
     @Override
     protected void setupQuestionData()
@@ -43,7 +41,7 @@ public class MathQuestions extends QuestionRandom
     	Random rand = new Random();
     	Integer arg1 = rand.nextInt(50)+1;
     	Integer arg2 = (int)Math.sqrt((double)arg1);
-    	Integer opIndex = rand.nextInt(operators.length);
+    	int opIndex = rand.nextInt(operators.length);
     	char operator = operators[opIndex];
         // format question
         this.question = String.format("What is (int)" + arg1 + " " + "%s" + " (int)" + arg2, operator );
@@ -89,7 +87,6 @@ public class MathQuestions extends QuestionRandom
      * Main test method to support console execution
      * 
      * @param  args		// satisfies default for Java
-     * @return void
      */
     public static void main(String[] args)
     {
@@ -99,7 +96,6 @@ public class MathQuestions extends QuestionRandom
     /**
      * MainTest supports console execution and receiving write or wrong return message
      * 
-     * @param  void
      * @return score / right or wrong
      */
     public static String mainTest()

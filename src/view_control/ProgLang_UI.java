@@ -1,34 +1,20 @@
 package view_control;
 
-import java.awt.EventQueue;
+import control_prog_lang.ProgLangManager;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.border.EtchedBorder;
-
-import control_prog_lang.AttributeModel;
-import control_prog_lang.Java;
-import control_prog_lang.ProgLangManager;
-import control_prog_lang.Python;
-import control_prog_lang.Ruby;
-import util.ConsoleMethods;
 
 public class ProgLang_UI extends JFrame {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField txtSearchTerm;
+	private final JTextField txtSearchTerm;
 	
 	// Control variables for data
 	ProgLangManager pLM = new ProgLangManager();
@@ -41,14 +27,12 @@ public class ProgLang_UI extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProgLang_UI frame = new ProgLang_UI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		EventQueue.invokeLater(() -> {
+			try {
+				ProgLang_UI frame = new ProgLang_UI();
+				frame.setVisible(true);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		});
 	}
@@ -60,7 +44,7 @@ public class ProgLang_UI extends JFrame {
 				
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 706, 457);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBackground(Color.PINK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -116,46 +100,40 @@ public class ProgLang_UI extends JFrame {
 		contentPane.add(txtrBox3);
 		
 		JButton button_shift_right = new JButton(">");
-		button_shift_right.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Shift position index to right
-				posIndex = pLM.incrementPositon(posIndex);
-				// setter
-				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
-			}
+		button_shift_right.addActionListener(e -> {
+			// Shift position index to right
+			posIndex = pLM.incrementPositon(posIndex);
+			// setter
+			setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
 		});
 		button_shift_right.setBounds(679, 197, 27, 55);
 		contentPane.add(button_shift_right);
 		
 		JButton button_shift_left = new JButton("<");
-		button_shift_left.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Shift position index to left
-				posIndex = pLM.decrementPositon(posIndex);
-				// setter
-				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
-			}
+		button_shift_left.addActionListener(e -> {
+			// Shift position index to left
+			posIndex = pLM.decrementPositon(posIndex);
+			// setter
+			setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
 		});
 		button_shift_left.setBounds(0, 197, 27, 55);
 		contentPane.add(button_shift_left);
-		btnPressToSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Control variables
-				posIndex = 0;
-				if (pLMbak == null) pLMbak = pLM;
-				
-				// build a string of languages meeting filter
-				String Answer = pLMbak.searchProgLangs(txtSearchTerm.getText());
-				if (Answer.length() <= 1)
-					Answer = "No match";
-				lblProgLangFound.setText(Answer);
-				
-				// build a filtered list
-				pLM = new ProgLangManager(pLMbak, txtSearchTerm.getText());
-				// setter
-				setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
-				
-			}
+		btnPressToSearch.addActionListener(e -> {
+			// Control variables
+			posIndex = 0;
+			if (pLMbak == null) pLMbak = pLM;
+
+			// build a string of languages meeting filter
+			String Answer = pLMbak.searchProgLangs(txtSearchTerm.getText());
+			if (Answer.length() <= 1)
+				Answer = "No match";
+			lblProgLangFound.setText(Answer);
+
+			// build a filtered list
+			pLM = new ProgLangManager(pLMbak, txtSearchTerm.getText());
+			// setter
+			setTextBoxes( txtrBox1,  txtrBox2,  txtrBox3);
+
 		});
 		
 	}
@@ -170,15 +148,9 @@ public class ProgLang_UI extends JFrame {
 		for (int i = 0; i < 3 && i < pLM.getSize(); i++) {
 			am = pLM.getProgLangByIndex(posIndex+i);
 			switch (i) {
-			case 0:
-				txtrBox1.setText(am.toString());
-				break;
-			case 1:
-				txtrBox2.setText(am.toString());
-				break;
-			case 2:
-				txtrBox3.setText(am.toString());
-				break;
+				case 0 -> txtrBox1.setText(am.toString());
+				case 1 -> txtrBox2.setText(am.toString());
+				case 2 -> txtrBox3.setText(am.toString());
 			}
 		}
 	}
