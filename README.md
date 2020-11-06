@@ -6,15 +6,14 @@
 ## Map of provided Code to AP CSA requirements
 [Computer Science A Course Cpnten description pages 17, 18, 19](https://apcentral.collegeboard.org/pdf/ap-computer-science-a-course-and-exam-description.pdf?course=ap-computer-science-a)
 
-| Unit | MVC idea learnings |
+| Unit | MVC idea concepts |
 | ------------- | ----------- |
-|
 |  Writing Classes | MVC ideas has a several classes that have a specific MVC purpose  |
 |  Linked Lists, Queues, Stacks | Writing classes that are specific to model |
 |  JFrame, UI classes | Writing classes that are specific to presentation |
 
-| Unit | Percentage | Hello Series usage |
-| ------------- | ----------- | ----------- |
+| Unit |  Hello Series usage |
+| ------------- | -----------  |
 |  Big Idea 1: Creative Computing | 10-13% | Students will build a Web Site Portfolio and Team Project(S) according to their own interests |
 |  Big Idea 2: Data | 17-22% | Student will define and establish data definitions in Python. They will use "backend" Python data in "frontend" to be rendered via HTML. |
 |  Big Idea 3: Algorithms and Programming | 30-35% | Students will engage in defining Python dictionaries, organizing data, and processing data on HTML pages.  Students will learn HTML makrup, Jinja templates, and Jinja/Python logic |
