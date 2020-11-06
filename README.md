@@ -11,3 +11,5 @@
 |  Writing Classes | MVC ideas has a several classes that have a specific MVC purpose  |
 |  Linked Lists, Queues, Stacks | Writing classes that are specific to model |
 |  JFrame, UI classes | Writing classes that are specific to presentation |
+|  IntelliJ and GitHub | Using real world development and project tools |
+|  BlueJ | Assisting with code modeling and class design |
