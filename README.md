@@ -4,7 +4,7 @@
 3. Deploy: logic of application, connection between model and view
 
 ## Map of provided Code to AP CSA requirements
-[Computer Science A Course Cpnten description pages 17, 18, 19](https://apcentral.collegeboard.org/pdf/ap-computer-science-a-course-and-exam-description.pdf?course=ap-computer-science-a)
+[Computer Science A Course Option description pages 17, 18, 19](https://apcentral.collegeboard.org/pdf/ap-computer-science-a-course-and-exam-description.pdf?course=ap-computer-science-a)
 
 | Concept or Code | MVC idea |
 | ------------- | ----------- |
