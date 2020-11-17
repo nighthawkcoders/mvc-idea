@@ -9,7 +9,7 @@
 | Concept or Code | MVC idea |
 | ------------- | ----------- |
 |  Writing Classes | MVC ideas has a several classes that have a specific MVC purpose  |
-|  Linked Lists, Queues, Stacks, Model classes | Writing classes that are specific to model |
-|  JFrame, UI classes | Writing classes that are specific to user presentation |
-|  IntelliJ, GitHub | Using real world development and project tools |
-|  BlueJ | Assisting with MVC class design, also good for inheritance |
+|  Linked Lists, Queues, Stacks, Model classes | Writing classes that are specific to model, data |
+|  JFrame, UI classes | Writing classes that are specific to view, user presentation |
+|  IntelliJ, GitHub | Using real world development and version control tools |
+|  BlueJ | Assisting with MVC class design, or inheritance design |
